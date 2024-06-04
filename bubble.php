@@ -19,5 +19,7 @@ function bubbleSort($array) {
 $array = [4, 7, 6, 2, 8, 9, 3];
 var_dump($array);
 $sortedArray = bubbleSort($array);
+echo "<pre>";
 print_r($sortedArray);
+echo "</pre>";
 ?>
