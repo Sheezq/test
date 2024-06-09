@@ -1,30 +1,45 @@
 <?php
 $users = [
-    ['email' => 'pablo@example.com','name' => 'Pablo', 'age' => 24],
-    ['email' => 'pablo1@example.com','name' => 'Pablo1', 'age' => 25],
-    ['email' => 'pablo2@example.com','name' => 'Pablo2', 'age' => 26],
-    ['email' => 'pablo3@example.com','name' => 'Pablo3', 'age' => 27],
+    ['id' => '001','email' => 'pablo@example.com','name' => 'Pablo', 'age' => 24],
+    ['id' => '002','email' => 'egor@example.com','name' => 'Egor', 'age' => 25],
+    ['id' => '003','email' => 'katya@example.com','name' => 'Katya', 'age' => 26],
+    ['id' => '004','email' => 'petya@example.com','name' => 'Petya', 'age' => 27],
 ];
 
-$lines = [];
 foreach ($users as $user) {
-    $lines[] = implode(", ", $user);
+    $filename = 'user_' . ($user['id']) . '.txt';
+    $line = "Id: {$user['id']}\nEmail: {$user['email']}\nName: {$user['name']}\nAge: {$user['age']}\n\n";
+    file_put_contents($filename, $line);
 }
 
-file_put_contents('users.txt', implode("\n", $lines, ));
+$directory = '.';
 
+$files = scandir($directory);
 
-$content = file_get_contents('C:\OSPanel\home\full-example.local\public\users.txt');
-$lines = explode("\n",($content));
-$users = [];
-foreach ($lines as $line) {
-    $users[] = explode(", ", $line);
+$filesContent = [];
+
+foreach ($files as $file) {
+
+    if (strpos($file, '.txt')) {
+        $content = file_get_contents($file);
+        $filesContent[$file] = $content;
+    }
 }
 
-foreach ($users as $user) {
-    echo "Email: " . ($user[0]) . "<br>";
-    echo "Name: " . ($user[1]) . "<br>";
-    echo "Age: " . ($user[2]) . "<br><br>";
+foreach ($filesContent as $content) {
+    $lines = explode("\n", trim($content));
+    $userData = [];
+
+    foreach ($lines as $line) {
+        list($key, $value) = explode(":", $line);
+        $userData[$key] = $value;
+    }
+
+    echo "Email: " . ($userData['Email']) . "<br>";
+    echo "Name: " . ($userData['Name']) . "<br>";
+    echo "Age: " . ($userData['Age']) . "<br><br>";
 }
+
+
 
 ?>
