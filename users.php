@@ -28,7 +28,6 @@ foreach ($files as $file) {
 
 foreach ($filesContent as $content) {
     $lines = explode("\n", trim($content));
-    $userData = [];
 
     foreach ($lines as $line) {
         list($key, $value) = explode(":", $line);
@@ -39,5 +38,7 @@ foreach ($filesContent as $content) {
     echo "Name: " . ($userData['Name']) . "<br>";
     echo "Age: " . ($userData['Age']) . "<br><br>";
 }
+
+
 
 ?>
