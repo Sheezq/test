@@ -39,4 +39,5 @@ foreach ($filesContent as $content) {
     echo "Name: " . ($userData['Name']) . "<br>";
     echo "Age: " . ($userData['Age']) . "<br><br>";
 }
+
 ?>
