@@ -1,4 +1,4 @@
-<?php
+git <?php
 $users = [
     ['id' => '001','email' => 'pablo@example.com','name' => 'Pablo', 'age' => 24],
     ['id' => '002','email' => 'egor@example.com','name' => 'Egor', 'age' => 25],
